@@ -119,7 +119,7 @@ const gameOver = () => {
     snake = [202];
     piece = [];
     isPieceShown = false;
-    snakeDirection = "ArrowRight";
+    
 }
 
 // Start Game Button
@@ -130,5 +130,6 @@ document.getElementById("start-button").addEventListener("click", function () {
     allFields.forEach(e => {e.style.backgroundColor="white";});
     border.forEach(element => {
         document.getElementById(`${element}`).style.backgroundColor="black";})
+    snakeDirection = "ArrowRight";
     startGame();
 }});
