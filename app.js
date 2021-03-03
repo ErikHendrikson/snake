@@ -60,10 +60,11 @@ let snake = [202];
 let piece = [];
 let isPieceShown = false;
 let isPlaying = false;
+let timeSet = 0;
 
 // functions
 const startGame = () => {
-    window.int1 = setInterval(move, 100);
+    window.int1 = setInterval(move, timeSet);
     isPlaying = true;
 }
 
@@ -93,7 +94,11 @@ const move = () => {
         snake.unshift(piece[0]);
         piece = [];
         isPieceShown = false;
-    }
+        // Shorten the time
+        clearInterval(window.int1);
+        timeSet = timeSet * 0.9;
+        window.int1 = setInterval(move, timeSet);
+        }
     //remove the last part of the snake and turn in white
     let removedPart = snake.pop(snake);
     document.getElementById(`${removedPart}`).style.backgroundColor="white";
@@ -103,6 +108,7 @@ const move = () => {
     });
     //Game over check
     gameOverCheck();
+    
 };
 
 const gameOverCheck = () => {
@@ -131,5 +137,6 @@ document.getElementById("start-button").addEventListener("click", function () {
     border.forEach(element => {
         document.getElementById(`${element}`).style.backgroundColor="black";})
     snakeDirection = "ArrowRight";
+    timeSet = 200;
     startGame();
 }});
