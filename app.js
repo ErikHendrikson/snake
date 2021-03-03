@@ -71,7 +71,7 @@ const startGame = () => {
 const randomPiece = () => {
     // pick random number and assign and color grey
     // not possible if the number is included in the snake or border array
-    let rp = Math.floor(Math.random()*100);
+    let rp = Math.floor(Math.random()*400);
     if(!border.includes(rp) && !snake.includes(rp)){
         piece.push(rp);
         document.getElementById(`${piece}`).style.backgroundColor="grey";
@@ -96,7 +96,7 @@ const move = () => {
         isPieceShown = false;
         // Shorten the time
         clearInterval(window.int1);
-        timeSet = timeSet * 0.9;
+        timeSet = timeSet * 0.95;
         window.int1 = setInterval(move, timeSet);
         }
     //remove the last part of the snake and turn in white
