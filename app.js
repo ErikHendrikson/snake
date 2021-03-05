@@ -72,13 +72,15 @@ const randomPiece = () => {
     // pick random number and assign and color grey
     // not possible if the number is included in the snake or border array
     let rp = Math.floor(Math.random()*400);
-    if(!border.includes(rp) && !snake.includes(rp)){
-        piece.push(rp);
-        document.getElementById(`${piece}`).style.backgroundColor="grey";
-        isPieceShown = true;
-    } else {
+    if(border.includes(rp) || snake.includes(rp)){
+        rp = 0;
         randomPiece();
+    } else {
+        piece.push(rp);
+        document.getElementById(`${piece[0]}`).style.backgroundColor="grey";
+        isPieceShown = true;
     };
+    
 }
 
 const move = () => {
