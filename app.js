@@ -72,7 +72,8 @@ const randomPiece = () => {
     // pick random number and assign and color grey
     // not possible if the number is included in the snake or border array
     let rp = Math.floor(Math.random()*400);
-    if(border.includes(rp) || snake.includes(rp)){
+    console.log(rp);
+    if(border.includes(rp) || rp == 0 || snake.includes(rp)){
         rp = 0;
         randomPiece();
     } else {
